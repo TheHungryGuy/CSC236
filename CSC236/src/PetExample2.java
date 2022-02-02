@@ -3,11 +3,11 @@ public class PetExample2
    private String name,ownerName,species,breed;
    private double age,weight ;
   
-   public Pet()
+   public void Pet()
    {
       
    }
-   public Pet(String name,String owner,String spe,String breed,double age,double wght)
+   public void Pet(String name,String owner,String spe,String breed,double age,double wght)
    {
        this.name=name;
        this.ownerName=owner;

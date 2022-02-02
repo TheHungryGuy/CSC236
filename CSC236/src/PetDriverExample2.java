@@ -4,38 +4,38 @@ import java.util.Scanner;
 
 	public class PetDriverExample2 {
 	public static void main(String[] args) throws FileNotFoundException {
-	Pet []pets=new Pet[25];
+	Pets []pet=new Pets[25];
 	int numPet;
-	numPet=readData(pets);
+	numPet=readData(pet);
 	  
 	System.out.println("All Pet Cats are: ");
-	pringPerticularPets(pets,numPet,"Cat");
+	pringPerticularPets(pet,numPet,"Cat");
 	System.out.println("\nAll Pet Dogs are: ");
-	pringPerticularPets(pets,numPet,"Dog");
+	pringPerticularPets(pet,numPet,"Dog");
 	System.out.println("\nAll Pets are:");
-	printAllPets(pets,numPet);
+	printAllPets(pet,numPet);
 	  
 	}
-	public static int readData(Pet []pets) throws FileNotFoundException
+	public static int readData(Pets []pet) throws FileNotFoundException
 			{
 				int count=0;
 				Scanner scnr=new Scanner(new File("pets.dat"));
 				while(scnr.hasNext())
 				{
-				pets[count]=new Pet(scnr.next(), scnr.next(), scnr.next(), scnr.next(), scnr.nextDouble(), scnr.nextDouble());
+				pet[count]=new Pets(scnr.next(), scnr.next(), scnr.next(), scnr.next(), scnr.nextDouble(), scnr.nextDouble());
 				count++;
 				}
 			return count;
 			}
 
-		private static void printAllPets(Pet[] pets, int numPet) {
+		private static void printAllPets(Pets[] pets, int numPet) {
 		for(int i=0;i<numPet;i++)
 		{
 		System.out.println(pets[i]);
 		}
 		}
 
-	private static void pringPerticularPets(Pet[] pets, int numPet, String species)
+	private static void pringPerticularPets(Pets[] pets, int numPet, String species)
 	{
 		for(int i=0;i<numPet;i++)
 		{
