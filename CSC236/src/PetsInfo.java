@@ -24,7 +24,7 @@ public class PetsInfo {
 	       
 	       System.out.println("The Number of pets added to list is " + pet.size()); //print out numbers of pets added to array
 
-	
+	 // hello world
 	}
 	 
 	 //method to print arraylist
