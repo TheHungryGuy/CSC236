@@ -1,3 +1,4 @@
+package pet;
 public class PetExample2
 {
    private String name,ownerName,species,breed;
