@@ -1,3 +1,4 @@
+package stackPractice;
 import java.util.Scanner;
 public class useStack {
 

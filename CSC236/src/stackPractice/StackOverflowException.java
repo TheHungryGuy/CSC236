@@ -1,3 +1,4 @@
+package stackPractice;
 public class StackOverflowException extends RuntimeException
 {
   public StackOverflowException()
