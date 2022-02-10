@@ -1,10 +1,9 @@
 package caesarCipher;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-
-
 
 public class Dictionary implements DictionaryInterface  {
 	/* The Dictionary class will have a field to hold the words; the type of this field will be an ArrayList of Strings. 
@@ -15,11 +14,12 @@ public class Dictionary implements DictionaryInterface  {
 	//attributes
 	private String word;
 	private int size;
+	ArrayList<Dictionary> dict = new ArrayList<Dictionary>();  //ArrayList to hold Words added in 
 	
 	//default constructor
 	public Dictionary() {
-		//don't do anything here
-		//bec, it's just an empty object...
+	
+		//an empty object
 	}
 	
 	public Dictionary(String Word)
@@ -31,7 +31,8 @@ public class Dictionary implements DictionaryInterface  {
 	
 	@Override
 	public void addWord(String word) {
-	
+		
+		new Dictionary(this.word);
 		
 	}
 
@@ -43,12 +44,32 @@ public class Dictionary implements DictionaryInterface  {
 	@Override
 	public int getSize() {
 		
-		return this.size;
+		return dict.size();
 	}
 
 	
-	public void writeDict(String dictFileName) {
-		// TODO Auto-generated method stub
+	public void writeDict(ArrayList<Dictionary> dictFileName) {
+		  BufferedReader reader;
+	       String word;
+	       
+	       try
+	       {
+	           reader = new BufferedReader(new FileReader(dictFileName));
+	           String line = reader.readLine();
+	           while (line != null)
+	           {
+	               word=line;
+	               // read next line
+	      
+	              dict.add(new Dictionary(word));
+	               line = reader.readLine();
+	           }
+	           reader.close();
+	       }
+	       catch (IOException e)
+	       {
+	           System.out.println("File not found");
+	       }
 		
 	}
 
