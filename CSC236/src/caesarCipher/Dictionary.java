@@ -13,7 +13,7 @@ public class Dictionary implements DictionaryInterface  {
 	
 	//attributes
 	private String word;
-	private int size;
+
 	ArrayList<Dictionary> dict = new ArrayList<Dictionary>();  //ArrayList to hold Words added in 
 	
 	//default constructor
@@ -48,7 +48,7 @@ public class Dictionary implements DictionaryInterface  {
 	}
 
 	
-	public void writeDict(ArrayList<Dictionary> dictFileName) {
+	public void writeDict(String dictFileName) {
 		  BufferedReader reader;
 	       String word;
 	       
