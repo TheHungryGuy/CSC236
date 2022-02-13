@@ -52,7 +52,8 @@ public class DicitionaryTester {
 			
 	}
 	
-	
+	//Antonio Arce CSC236 Data Structures in Java Lab 1
+
 	private static void readData(ArrayList<Dictionary> Dict,String file)
 	   {
 	       BufferedReader reader;

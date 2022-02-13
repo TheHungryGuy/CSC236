@@ -1,15 +1,15 @@
 package caesarCipher;
 
 import java.util.ArrayList;
-
+//Antonio Arce CSC236 Data Structures in Java Lab 1
 @SuppressWarnings("unused")
 public class Cipher {
 	
 	//attributes
-	private final int maxShiftKey = 4;
+	
 	private int shiftKey = 0;
 	private int modKey = 0;
-	int modKeyCount = 0;
+	private int modKeyCount = 0;
 	
 	
 	public String encrypt(String plainText) {
@@ -44,9 +44,10 @@ public class Cipher {
 	
 	//km rrq! = Hi Mom! (Shift key-3, Mod key- 2)
 	
-	public void decrypt(String encryptedText) {
+	public String decrypt(String encryptedText) {
 		//encryptedText is the String to be decrypted
 		
+		String decryptText = null;
 		char[]encryptArr = encryptedText.toCharArray();		//convert plainText into char array
 		shiftKey = 0;										//Resets shiftKey to 0
 		
@@ -78,11 +79,12 @@ public class Cipher {
 					//String decryptText = String.valueOf(encryptArr);		//Store decrypted text in string
 					//System.out.println(decryptText  + "\tShift Key-" + shiftKey +  "\tMod Key-"+ modKey); //Test print
 				}
-				String decryptText = String.valueOf(encryptArr);		//Store decrypted text in string
+				 decryptText = String.valueOf(encryptArr);		//Store decrypted text in string
 				System.out.println(decryptText  + "\tShift Key-" + shiftKey +  "\tMod Key-"+ modKey); //Test print
 				
 			}
 		}
+		return decryptText;
 	}
 
 	public int getModKey() {

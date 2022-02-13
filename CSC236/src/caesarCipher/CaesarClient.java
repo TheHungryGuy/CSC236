@@ -1,3 +1,5 @@
+//Antonio Arce CSC236 Data Structures in Java Lab 1
+
 package caesarCipher;
 
 public class CaesarClient {
@@ -10,8 +12,8 @@ public class CaesarClient {
 		
 		//ceasar.decrypt("km rrq!");
 		System.out.println();
-		ceasar.decrypt("km psp!");
-
+		//ceasar.decrypt("km psp!");
+		System.out.println(ceasar.decrypt("km psp!"));
 	}
 
 }
