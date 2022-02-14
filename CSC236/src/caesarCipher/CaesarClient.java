@@ -18,7 +18,7 @@ public class CaesarClient {
 		Scanner keyboard = new Scanner(System.in); //create a class of obj scanner to for keyboard inputs
 		
 		
-		/*
+		
 		 
 		System.out.println("Enter a String to encrypt:\t"); //prompt for string to encrypt
 		plainText = keyboard.nextLine(); // save input as plaintext
@@ -27,8 +27,9 @@ public class CaesarClient {
 		System.out.println("Enter the mod key:\t");//prompt for mod key
 		ceasar.changeModKey( keyboard.nextInt()); 
 		encryptedText = ceasar.encrypt(plainText) ; //saves the encrypted text in string
+	
 		
-		
+		System.out.println();
 		System.out.println("Now decrypting...");
 		System.out.println("Enter the shift key:\t"); //prompt for shift key
 		ceasar.changeShiftKey( keyboard.nextInt()); 
@@ -36,9 +37,11 @@ public class CaesarClient {
 		ceasar.changeModKey( keyboard.nextInt()); 
 		decryptedText = ceasar.decrypt(encryptedText);
 		
-		*/
+		System.out.println();
+		System.out.println(decryptedText); //test
+		System.out.println();
 		
-		encryptedText = "km rrq";
+		//encryptedText = "km rrq";
 		
 		//prompt for the name of the file with ciphertext to be broken and the name of the file to hold the plaintext
 		System.out.println("Brute force decrypting...");

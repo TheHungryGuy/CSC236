@@ -22,8 +22,28 @@ public class Breaker {
 				for(int i=0;i<encryptedText.length();i++) {			//run for loop till last letter of plainText
 					
 					if(Character.isLetter(encryptedText.charAt(i))) { //checks if character is a letter if not skips
-						encryptArr[i] = (char) (encryptArr[i]- shiftKey); //shift letters in using shiftKey
-						encryptArr[i] = (char) (encryptArr[i]- modKeyCount); //shift letters in using modKey
+						
+						if(Character.isUpperCase(encryptedText.charAt(i))) { //checks if its uppercase
+							
+							int pos= ((int)encryptArr[i]-65); //0-26
+							int shift = (shiftKey+modKeyCount); // total shift for cycle
+							
+							if((pos-shift<0)) {	//checks if goes under uppercase ascii code
+								encryptArr[i]= (char) ((int)encryptArr[i]+26); //adds 26 to "loop" back to top
+							}
+							encryptArr[i] = (char) ((int)encryptArr[i]- shiftKey -modKeyCount); //shift letters in using shiftKey+modKey
+					
+						}
+						if(Character.isLowerCase(encryptedText.charAt(i))) {	//goes to lowercase other wise
+							
+							int pos= ((int)encryptArr[i]-97); //0-26
+							int shift = (shiftKey+modKeyCount);
+							
+							if((pos-shift<0)) { //checks if goes under lowercase ascii code
+								encryptArr[i]= (char) ((int)encryptArr[i]+26); //adds 26 to "loop" back to top
+							}
+							encryptArr[i] = (char) ((int)encryptArr[i]- shiftKey -modKeyCount ); //shift letters in using shiftKey+modKey
+						}
 						modKeyCount++; 		//Add 1 to the count so on next loop adds an extra
 						if(modKeyCount > modKey) { 	//when the modKeyCount goes over modKey
 							modKeyCount = 0;  //modKeyCount gets reset back to zero
