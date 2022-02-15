@@ -3,7 +3,6 @@
 package caesarCipher;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -15,12 +14,9 @@ public class CaesarClient {
 	public static void main(String[] args) {
 		
 		
-		String plainText;
-		String encryptedText;
-		String decryptedText;
-		
 		Breaker breaker = new Breaker();
 		Cipher ceasar = new Cipher(); //creates an obj of cipher class
+		@SuppressWarnings("resource")
 		Scanner keyboard = new Scanner(System.in); //create a class of obj scanner to for keyboard inputs
 		Dictionary dictionary = new Dictionary();  //calls dictionary class
 		
@@ -37,7 +33,7 @@ public class CaesarClient {
 		ceasar.changeShiftKey( keyboard.nextInt()); 
 		System.out.println("Enter the mod key:\t");//prompt for mod key
 		ceasar.changeModKey( keyboard.nextInt()); 
-		keyboard.nextLine();
+		//keyboard.nextLine();
 
 
 		//3. read each line of the file, encrypt it, and write the ciphertext to the output file
@@ -50,13 +46,16 @@ public class CaesarClient {
 		
 		writeFile(cipherFile,encryptArray);
 		//4. prompt for the name of the file with ciphertext Strings and the name of the file to hold the plaintext
-		//System.out.println("aaaaaaaaaaaaaaaaa");
+		System.out.println();
+		System.out.println("Now encrypting...");
+		System.out.println(".................");
+		System.out.println();
 		
 		System.out.println("Enter the name of cipher text file:\t");
-		
-		String cipherFile2 = keyboard.nextLine();
+		keyboard.nextLine();
+		cipherFile = keyboard.nextLine();
 		System.out.println("Enter name of file to hold the decryption:\t");
-		String plainFile2 = keyboard.nextLine();
+	    plainFile = keyboard.nextLine();
 		//5. prompt for the keys
 		System.out.println("Enter the shift key:\t"); //prompt for shift key
 		ceasar.changeShiftKey( keyboard.nextInt()); 
@@ -65,17 +64,21 @@ public class CaesarClient {
 		//6.read each line of the file, decrypt it, and write the plaintext to the output file
 		System.out.println();
 		System.out.println("Now decrypting...");
-		readFile(cipherFile2,encryptArray);
+		System.out.println("..................");
+		System.out.println();
+		readFile(cipherFile,encryptArray);
 		plainArray.clear();
 		for(int i =0; i<encryptArray.size();i++) { //run thru each line of the array and encrypt it
 			plainArray.add(i, ceasar.decrypt(encryptArray.get(i))); 
 		}
-		writeFile(plainFile2,plainArray);
+		writeFile(plainFile,plainArray);
 		//7. prompt for the name of the file with ciphertext to be broken and the name of the file to hold the plaintext
+		System.out.println();
 		System.out.println("Enter the name of cipher text file:\t");
-		cipherFile2 = keyboard.nextLine();
+		keyboard.nextLine();
+		cipherFile = keyboard.nextLine();
 		System.out.println("Enter name of file to hold the decryption:\t");
-		plainFile2 = keyboard.nextLine();
+		plainFile = keyboard.nextLine();
 		System.out.println("Brute force decrypting...");
 		plainArray.clear(); 
 		
@@ -83,7 +86,8 @@ public class CaesarClient {
 		for(int i =0; i<encryptArray.size();i++) {
 			plainArray.add(i, breaker.Break(encryptArray.get(i))); 
 		}
-		breaker.Break(encryptedText);
+		writeFile(plainFile,plainArray);
+		//breaker.Break(encryptedText);
 		
 		//System.out.println("Enter a String to encrypt:\t"); //prompt for string to encrypt
 		//plainText = keyboard.nextLine(); // save input as plaintext
