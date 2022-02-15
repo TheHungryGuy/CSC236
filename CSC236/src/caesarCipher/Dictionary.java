@@ -39,7 +39,9 @@ public class Dictionary implements DictionaryInterface  {
 
 	@Override
 	public boolean isWord(String word) {//to return true or false if the species match
-		return this.word.equals(word);
+		String rmSym = word.replaceAll("[^a-zA-Z0-9\\s+]", ""); //removes all symbols from the input 
+																//so that only the word itself is being compared
+		return this.word.equalsIgnoreCase(rmSym);				//ignores upper and lower case while comparing 
 	}
 
 	@Override
@@ -49,7 +51,7 @@ public class Dictionary implements DictionaryInterface  {
 	}
 
 	
-	public void writeDict(String dictFileName) {
+	public void writeDict(String dictFileName) { //writes to dictionary ArrayList from file name
 		  BufferedReader reader;
 	       String word;
 	       

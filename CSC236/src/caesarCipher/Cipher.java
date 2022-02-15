@@ -41,8 +41,8 @@ public class Cipher {
 		}
         String encryptedText = String.valueOf(encryptArr); //Store encryptedText
 
-        System.out.println(encryptedText + " is the ceasar cipher code of " + plainText +
-        		" with a shift key of " + shiftKey + " and mod key of " + modKey); //print out to test
+       // System.out.println(encryptedText + " is the ceasar cipher code of " + plainText +
+        //		" with a shift key of " + shiftKey + " and mod key of " + modKey); //print out to test
         
         return encryptedText; //returns the encrypted text to call
 		
