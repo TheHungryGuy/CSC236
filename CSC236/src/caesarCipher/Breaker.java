@@ -13,8 +13,8 @@ public class Breaker {
 	private boolean broken = false;
 	private boolean tripped = false;
 	
-	public void Break(String encryptedText) {		//method to brute force caesar cipher and find keys 
-		
+	public String Break(String encryptedText) {		//method to brute force caesar cipher and find keys 
+		String decryptedText = null;
 		Dictionary dictionary = new Dictionary();  //calls dictionary class
 		//dictionary.writeDict("dictionary.txt");  //writes dictionary from file	
 		
@@ -46,7 +46,7 @@ public class Breaker {
 							}
 						}
 				}
-		        String decryptedText = String.valueOf(encryptArr); //Store encryptedText		        
+		        decryptedText = String.valueOf(encryptArr); //Store encryptedText		        
 		        String[] words = decryptedText.split("\\s+"); //to split a string into array to compare to
 		        if(checkWords(dictionary.dict,words[0])) {	//checks if first word is in the dict if not then skips
 		        	tripped = false; //boolean in case only the last word is true 
@@ -75,7 +75,8 @@ public class Breaker {
         	}
  			shiftKey++;
 			modKey=0;
-		}	
+		}
+		return decryptedText;	
 	}
 	
 	private static boolean checkWords(ArrayList<Dictionary> dict, String word){ //method to check words against dictionary
@@ -91,7 +92,7 @@ public class Breaker {
 		//if word goes thru full loop without finding a match 
 		//system will print out no match found and prompt for a new string
 		if(wordFound == false) { 
-				System.out.println("Word not found!\n");
+				System.out.println("Word not found!\n" + word);
 				
 			}
 		return wordFound;
