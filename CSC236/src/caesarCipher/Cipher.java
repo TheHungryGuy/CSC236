@@ -1,8 +1,6 @@
+//Antonio Arce CSC236 Data Structures in Java Lab 1
 package caesarCipher;
 
-import java.util.ArrayList;
-//Antonio Arce CSC236 Data Structures in Java Lab 1
-@SuppressWarnings("unused")
 public class Cipher {
 	
 	//attributes

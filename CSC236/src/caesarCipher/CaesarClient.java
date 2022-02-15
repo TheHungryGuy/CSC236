@@ -18,11 +18,7 @@ public class CaesarClient {
 		Cipher ceasar = new Cipher(); //creates an obj of cipher class
 		@SuppressWarnings("resource")
 		Scanner keyboard = new Scanner(System.in); //create a class of obj scanner to for keyboard inputs
-		Dictionary dictionary = new Dictionary();  //calls dictionary class
-		
-		dictionary.writeDict("dictionary.txt");  //writes dictionary from file	
-		
-		
+
 		//1. prompt for the name of the file with plaintext Strings and the name of the file to hold the ciphertext
 		System.out.println("Enter name of plaintext strings file to encrypt:\t");
 		String plainFile = keyboard.nextLine();
@@ -51,10 +47,10 @@ public class CaesarClient {
 		System.out.println(".................");
 		System.out.println();
 		
-		System.out.println("Enter the name of cipher text file:\t");
+		System.out.println("Enter the name of cipher text file:\t"); //prompt for name
 		keyboard.nextLine();
 		cipherFile = keyboard.nextLine();
-		System.out.println("Enter name of file to hold the decryption:\t");
+		System.out.println("Enter name of file to hold the decryption:\t");//prompt for name 
 	    plainFile = keyboard.nextLine();
 		//5. prompt for the keys
 		System.out.println("Enter the shift key:\t"); //prompt for shift key
@@ -66,60 +62,37 @@ public class CaesarClient {
 		System.out.println("Now decrypting...");
 		System.out.println("..................");
 		System.out.println();
-		readFile(cipherFile,encryptArray);
-		plainArray.clear();
+		readFile(cipherFile,encryptArray); //reads cipher file into encrpytarray
+		plainArray.clear();//clears array for reuse
 		for(int i =0; i<encryptArray.size();i++) { //run thru each line of the array and encrypt it
-			plainArray.add(i, ceasar.decrypt(encryptArray.get(i))); 
+			plainArray.add(i, ceasar.decrypt(encryptArray.get(i))); //adds to array whenever decrypt returns
 		}
-		writeFile(plainFile,plainArray);
+		writeFile(plainFile,plainArray); //write from plainarray to file
+		
+		
 		//7. prompt for the name of the file with ciphertext to be broken and the name of the file to hold the plaintext
 		System.out.println();
 		System.out.println("Enter the name of cipher text file:\t");
 		keyboard.nextLine();
 		cipherFile = keyboard.nextLine();
+		readFile(cipherFile,encryptArray);// reads fomr cipher file into encryptarray
 		System.out.println("Enter name of file to hold the decryption:\t");
 		plainFile = keyboard.nextLine();
 		System.out.println("Brute force decrypting...");
-		plainArray.clear(); 
+		plainArray.clear();  //array cleared
 		
 		//run for loop for breaker class
 		for(int i =0; i<encryptArray.size();i++) {
-			plainArray.add(i, breaker.Break(encryptArray.get(i))); 
+			plainArray.add(i, breaker.Break(encryptArray.get(i)));  //when break returns , string added to array
 		}
-		writeFile(plainFile,plainArray);
-		//breaker.Break(encryptedText);
-		
-		//System.out.println("Enter a String to encrypt:\t"); //prompt for string to encrypt
-		//plainText = keyboard.nextLine(); // save input as plaintext
-		//encryptedText = ceasar.encrypt(plainText) ; //saves the encrypted text in string
-/*	
+		if(!breaker.flagTripped()) { //writes to file if succesfully brute forced
+			writeFile(plainFile,plainArray);
+		}else { //else prints out to screen that keys not found
+			System.out.println("Code not broken! Keys not found! ");
+		}
 		
 		
-		System.out.println("Enter the shift key:\t"); //prompt for shift key
-		ceasar.changeShiftKey( keyboard.nextInt()); 
-		System.out.println("Enter the mod key:\t");//prompt for mod key
-		ceasar.changeModKey( keyboard.nextInt()); 
-		decryptedText = ceasar.decrypt(encryptedText);
-		
-		System.out.println();
-		System.out.println(decryptedText); //test
-		System.out.println();
-		
-		//encryptedText = "km rrq";
-		
-		//prompt for the name of the file with ciphertext to be broken and the name of the file to hold the plaintext
-		System.out.println("Brute force decrypting...");
-		breaker.Break(encryptedText);
-		
-		
-		
-		
-		*/
-		
-		
-		
-		
-		
+
 		
 		//ceasar.decrypt("km rrq!");
 	//	System.out.println();

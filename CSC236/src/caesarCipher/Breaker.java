@@ -16,7 +16,7 @@ public class Breaker {
 	public String Break(String encryptedText) {		//method to brute force caesar cipher and find keys 
 		String decryptedText = null;
 		Dictionary dictionary = new Dictionary();  //calls dictionary class
-		//dictionary.writeDict("dictionary.txt");  //writes dictionary from file	
+		dictionary.writeDict("dictionary.txt");  //writes dictionary from file	
 		
 		for(int k =0; k <= maxShiftKey;k++) {
 			for(int j =0; j <= maxModKey; j++ ) {
@@ -58,19 +58,19 @@ public class Breaker {
 		        		 	tripped = true;			// tripped is set as true just in case last word sets broken to true 
 		        		}
 		        	}
-		        	if(broken && !tripped) {//as long as broken is true and tripped is false
+		        	if(broken && !flagTripped()) {//as long as broken is true and tripped is false
 		        		System.out.println(shiftKey +" "+ modKey); //prints current shift key and mod key
 		        		 System.out.println(decryptedText  + " is the decrypted code of " + encryptedText +
 		 		        		" with a shift key of " + shiftKey + " and mod key of " + modKey); 
 		        		 break; //exits out of loops
 		        	}
 		        }
-	        	if (broken && !tripped) { //as long as broken is true and tripped is false
+	        	if (broken && !flagTripped()) { //as long as broken is true and tripped is false
 	        		break; //exits out of loop
 	        	}
 		        modKey++;
 			}
-        	if (broken && !tripped) { //as long as broken is true and tripped is false
+        	if (broken && !flagTripped()) { //as long as broken is true and tripped is false
         		break; //exits out of loop
         	}
  			shiftKey++;
@@ -92,11 +92,15 @@ public class Breaker {
 		//if word goes thru full loop without finding a match 
 		//system will print out no match found and prompt for a new string
 		if(wordFound == false) { 
-				System.out.println("Word not found!\n" + word);
+				System.out.println("Word not found!\n" );
 				
 			}
 		return wordFound;
 		}
+
+	public boolean flagTripped() { //check for flag tripping
+		return tripped;
+	}
 		
 	
 	
