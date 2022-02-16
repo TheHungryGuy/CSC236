@@ -16,12 +16,14 @@ public class ArrayBoundedStack<T> implements StackInterface<T>
   protected T[] elements;           // holds stack elements
   protected int topIndex = -1;      // index of top element in stack
 
-  public ArrayBoundedStack()
+  @SuppressWarnings("unchecked")
+public ArrayBoundedStack()
   {
     elements = (T[]) new Object[DEFCAP];
   }
 
-  public ArrayBoundedStack(int maxSize)
+  @SuppressWarnings("unchecked")
+public ArrayBoundedStack(int maxSize)
   {
     elements = (T[]) new Object[maxSize];
   }
