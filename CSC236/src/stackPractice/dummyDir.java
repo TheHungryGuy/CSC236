@@ -3,7 +3,7 @@ package stackPractice;
 //Iterative Program to get all file names in Directory and SubDirectory
 
 import java.io.*;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.Stack;
 
 class dummyDir {
@@ -32,7 +32,7 @@ class dummyDir {
 				// print file name can code here according
 				// to our need
 				System.out.println(tmpF.getName()+"("+layer+")");
-				//System.out.println(layerCount.get(layer-1)+" Layer:"+layer);
+
 			}
 
 			else if (tmpF.isDirectory()) {
@@ -48,7 +48,7 @@ class dummyDir {
 				if(f.length!=0) {
 					layerCount[layer]=f.length;
 					//layerCount.add(f.length+0);
-					//System.out.println(layerCount.get(layer-1)+" Layer:"+layer);
+
 
 					//layerCount++;
 				}else {
@@ -59,18 +59,18 @@ class dummyDir {
 
 				}
 			} // else if ends here
-			//layerCount--;
 
 
 
-			if(layerCount.get(layer-1)==0 ) {
+
+			if(layerCount[layer]==0 ) {
 				layer--;
-				layerCount.set(layer-1,layerCount.get(layer-1)-1);
+				layerCount[layer]--;
 				//System.out.println(layerCount.get(layer-1));
 
 			}
 			else {
-				layerCount.set(layer-1,layerCount.get(layer-1)-1);
+				layerCount[layer]--;
 				//System.out.println(layerCount.get(layer-1));
 
 			}
