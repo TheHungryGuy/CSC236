@@ -22,14 +22,16 @@ public class ArrayUnboundedQueue<T> implements QueueInterface<T>
   protected int front = 0;          // index of front of queue
   protected int rear;               // index of rear of queue
 
-  public ArrayUnboundedQueue()
+  @SuppressWarnings("unchecked")
+public ArrayUnboundedQueue()
   {
     elements = (T[]) new Object[DEFCAP];
     rear = DEFCAP - 1;
     origCap = DEFCAP;
   }
 
-  public ArrayUnboundedQueue(int origCap)
+  @SuppressWarnings("unchecked")
+public ArrayUnboundedQueue(int origCap)
   {
     elements = (T[]) new Object[origCap];
     rear = origCap - 1;
@@ -41,7 +43,8 @@ public class ArrayUnboundedQueue<T> implements QueueInterface<T>
   // equal to the original capacity.
   {
     // create the larger array
-    T[] larger = (T[]) new Object[elements.length + origCap];
+    @SuppressWarnings("unchecked")
+	T[] larger = (T[]) new Object[elements.length + origCap];
 
     // copy the contents from the smaller array into the larger array
     int currSmaller = front;

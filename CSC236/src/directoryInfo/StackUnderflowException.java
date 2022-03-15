@@ -1,4 +1,4 @@
-package stackPractice;
+package directoryInfo;
 @SuppressWarnings("serial")
 public class StackUnderflowException extends RuntimeException
 {

@@ -5,6 +5,7 @@ public class useStack {
 	public static void main(String[] args) {
 	
 		ArrayBoundedStack<String> myStack = new ArrayBoundedStack<>(); //declare & instantiate an ArrayBoundedStack of String
+		@SuppressWarnings("resource")
 		Scanner keyboard = new Scanner(System.in);//Create scanner item
 		System.out.println("Insert a String"); //Ask for string
 		

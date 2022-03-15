@@ -1,6 +1,7 @@
 package queueExercise;
 
 
+@SuppressWarnings("serial")
 public class QueueUnderflowException extends RuntimeException
 {
   public QueueUnderflowException()

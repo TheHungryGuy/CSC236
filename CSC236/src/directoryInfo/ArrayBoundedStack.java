@@ -1,5 +1,4 @@
-package queueExercise;
-
+package directoryInfo;
 //----------------------------------------------------------------
 // ArrayBoundedStack.java    by Dale/Joyce/Weems         Chapter 2
 //
@@ -78,31 +77,4 @@ public ArrayBoundedStack(int maxSize)
   {
     return (topIndex == (elements.length - 1));
   }
-
-  // return the stack items formatted as a String, from bottom
-  // to top
-  public String toString()
-  {
-    String retStr = "";
-    int i;
-
-    // topIndex is subscript of top so include elements[topIndex]
-    for (i = 0 ; i <= topIndex ; i++) 
-    {
-      retStr = retStr + "   " + elements[i] + "\n";
-    }
-    return retStr;
-  }
-
-  // pop the top item and return it
-  public T topPop()
-  {
-    if (topIndex < 0)
-      throw new StackUnderflowException();
-    T hold = elements[topIndex];
-    elements[topIndex] = null;
-    topIndex--;
-    return hold;
-  }
-  
 }

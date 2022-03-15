@@ -1,5 +1,4 @@
-package queueExercise;
-
+package directoryInfo;
 @SuppressWarnings("serial")
 public class StackOverflowException extends RuntimeException
 {

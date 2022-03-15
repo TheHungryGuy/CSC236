@@ -1,4 +1,5 @@
 package stackPractice;
+@SuppressWarnings("serial")
 public class StackOverflowException extends RuntimeException
 {
   public StackOverflowException()

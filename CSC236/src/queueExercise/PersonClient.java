@@ -5,12 +5,14 @@ import java.util.Scanner;
 public class PersonClient {
 
 	public static void main(String[] args) {
+		@SuppressWarnings("unused")
 		Person person = new Person();
 		//import arrayunboundedque class
 		ArrayUnboundedQueue<Person> queue = new ArrayUnboundedQueue<>();
 		// write for loop to prompt for name,age, & cell number
 
 		//import scanner to read in inputs
+		@SuppressWarnings("resource")
 		Scanner keyboard = new Scanner(System.in);
 		//String to hold inputs
 		String input ="";
