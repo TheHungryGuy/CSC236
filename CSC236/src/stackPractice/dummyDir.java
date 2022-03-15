@@ -12,7 +12,8 @@ class dummyDir {
 		int[] layerCount = new int[100];
 		String spaces ="   ";
 		// provide complete path for directory(to be changed accordingly)
-		String mainDir = "c:/zero";
+		//String mainDir = "/zero";
+		String mainDir = "C:/Users/TheRedBox/Videos/Anime Shows/";
 		// File object
 		File file = new File(mainDir);
 		ArrayBoundedStack<File> stack = new ArrayBoundedStack<>();
@@ -24,14 +25,11 @@ class dummyDir {
 			File tmpF = stack.top();
 			stack.pop();
 			// check if it is a file or not
-			if (tmpF.isFile()) {
-				// print file name can code here according to our need
-				System.out.println(spaces.repeat(layer) + tmpF.getName()+"("+layer+")");
-			}
-			else if (tmpF.isDirectory()) {
+
+			if (tmpF.isDirectory()) {
 				// It's an directory hence list and push all
 				// files in stack
-				System.out.println(spaces.repeat(layer) + tmpF.getName()+"(f)"+"("+layer+")");
+				System.out.println(spaces.repeat(layer) + tmpF.getName());
 				layer++;
 				File[] f = tmpF.listFiles();
 				//check if the folder is empty or not
@@ -45,18 +43,22 @@ class dummyDir {
 					stack.push(each);
 
 				}
-			} 
+			} else  {
+				// print file name can code here according to our need
+				System.out.println(spaces.repeat(layer) + tmpF.getName());
+			}
 
-			if(layerCount[layer]==0 ) {
-				layer--;
+			if(layerCount[layer]<=0 ) {
+				do {
+					layer--;
+					if(layer==0) {
+						break;
+					}
+				}while(layerCount[layer]<=0 );
 				layerCount[layer]--;
-				//System.out.println(layerCount.get(layer-1));
-
 			}
 			else {
 				layerCount[layer]--;
-				//System.out.println(layerCount.get(layer-1));
-
 			}
 		} 
 	}
