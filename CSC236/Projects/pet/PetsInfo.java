@@ -44,7 +44,7 @@ public class PetsInfo {
 	       
 	       try
 	       {
-	           reader = new BufferedReader(new FileReader("pets.dat"));
+	           reader = new BufferedReader(new FileReader("Projects/pet/pets.dat"));
 	           String line = reader.readLine();
 	           while (line != null)
 	           {
