@@ -1,7 +1,4 @@
-package linkedCollectionExercise;
-
-import java.util.Iterator;
-
+package comparableExercise;
 //---------------------------------------------------------------------------
 // LinkedCollection.java          by Dale/Joyce/Weems               Chapter 5
 //
@@ -9,7 +6,6 @@ import java.util.Iterator;
 // Null elements are not allowed. Duplicate elements are allowed.
 // One constructor is provided, one that creates an empty collection.
 //---------------------------------------------------------------------------
-
 
 
 public class LinkedCollection<T> implements CollectionInterface<T>
@@ -21,8 +17,6 @@ public class LinkedCollection<T> implements CollectionInterface<T>
   protected boolean found;        // true if target found, else false
   protected LLNode<T> location;   // node containing target, if found
   protected LLNode<T> previous;   // node preceding location
-  public LLNode<T> currNode;
-  public Iterator<T> iterator;
 
   public LinkedCollection()
   {
@@ -119,35 +113,4 @@ public class LinkedCollection<T> implements CollectionInterface<T>
     return false;  // Linked implementation is never full
   }
 
- public class LinkedCollectionIterator implements Iterator<T>{
-	  
-	  
-	  
-	  public LinkedCollectionIterator() {
-		  LLNode<T> currNode ;
-		  	currNode=head;
-		  LLNode<T> prevNode;
-		  	prevNode=previous;
-	  }
-	  public boolean hasNext() {
-		
-		  LLNode<T> curr;
-		  curr=head;
-		if (curr.getLink().equals(null)) {
-			return false;
-		}
-		  
-		  return true;
-	  }
-	  
-	  public T next() {
-		  if(!hasNext()) {
-			  throw new IndexOutOfBoundsException("Illegal invocation of next in iterator. ");
-		  }
-		  
-		  	currNode=head.getLink();
-		  	
-		  return currNode.getInfo();
-	  }
-  }
 }

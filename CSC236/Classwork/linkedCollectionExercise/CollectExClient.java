@@ -1,12 +1,15 @@
 package linkedCollectionExercise;
 
 import java.io.*;
+import java.util.Iterator;
 import java.util.Scanner;
 
-public class CollectExClient {
+import linkedCollectionExercise.LinkedCollection.LinkedCollectionIterator;
+
+public class CollectExClient<T> implements Iterable  {
 	public static void main(String[] args) throws IOException {
 
-		LinkedCollection<Person> collect = new LinkedCollection<>();
+		LinkedCollection<Person> collect = new LinkedCollection<Person>();
 		System.out.println("Input file name containing persons:");
 		//person.dat
 		@SuppressWarnings("resource")
@@ -24,11 +27,11 @@ public class CollectExClient {
 			String lName = input.nextLine();
 			Person check = new Person(fName,lName,0,"zero");
 			collect.find(check);
-				if (collect.found) {
-					System.out.println(collect.location.getInfo());
-					
-				} 
-			
+			if (collect.found) {
+				System.out.println(collect.location.getInfo());
+
+			} 
+
 			if(!collect.found) {
 				System.out.println("Person not found in collection!");
 				System.out.println("Would you like to add person in? type y or n");
@@ -47,6 +50,12 @@ public class CollectExClient {
 			exitLoop = input.nextLine();
 		}
 
+		Iterator<Person> iter = collect.iterator;
+		for (Person person: collect) {
+			System.out.println(collect);
+		}
+		
+		
 
 	}
 
@@ -78,5 +87,21 @@ public class CollectExClient {
 		Person onepeep = new Person(first,last,age,cell);
 		mypeeps.add(onepeep);
 	}
+
+	@Override
+	public Iterator<T> iterator() {
+		// TODO Auto-generated method stub
+		return new LinkedCollectionIterator();
+	}
+	
+	
+	
+	
+
+	
+
+	
+	
+	
 
 }
