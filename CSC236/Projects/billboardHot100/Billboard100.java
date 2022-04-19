@@ -9,10 +9,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Billboard100 {
-
-
 	SortedArrayCollection<Song> songList = new SortedArrayCollection<>(20000); //increased cap to hold all songs in list
-
 	public Billboard100(String filename)throws FileNotFoundException, IOException {
 		//method takes in filename as a parameter
 		//Adds to the songList

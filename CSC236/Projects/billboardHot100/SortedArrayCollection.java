@@ -72,7 +72,6 @@ public class SortedArrayCollection<T> implements CollectionInterface<T>, Iterabl
                 recFind(target, first, location - 1);
         }
     }
-
     public boolean add(T element) {
     // Precondition:  element is Comparable to previously added objects
     //
