@@ -22,11 +22,16 @@ public class ClientBillboard100 {
 
 			while(!quit) {
 				System.out.println("Menu : ");
-				System.out.println("\t1-Display All Songs");
-				System.out.println("\t2-Display songs that were only hot 100 list for more than 12 weeks");
+				System.out.println("\t1-Print All Songs");
+				System.out.println("\t2-Print songs that were only hot 100 list for more than 12 weeks");
 				System.out.println("\t3-Search for Songs in a specific week");
 				System.out.println("\t4-Search Artist");
-				// System.out.println("\t5-Add Book");
+				System.out.println("\t5-Search Song");
+				System.out.println("\t6-Print all songs that have more than 1 instace of being on the chart");
+				System.out.println("\t7-Print all songs that hit #1");
+				System.out.println("\t8-Print all Songs in order by WeekID");
+				System.out.println("\t9-Print all Songs in alphabetical order by Song Name");
+				System.out.println("\t10-Print all songs in alphabetical order by Performer Name");
 				System.out.println("\t11-Exit");
 
 				input = keyboard.nextInt();
@@ -36,6 +41,12 @@ public class ClientBillboard100 {
 				case 2: billboard.weeksGT12Print();continue;
 				case 3: billboard.weekSearch(keyboard);continue;
 				case 4: billboard.preformerSearch(keyboard);continue;
+				case 5: billboard.songSearch(keyboard);continue;
+				case 6: billboard.instanceGT1Print();continue;
+				case 7: billboard.topPeakPrint();continue;
+				case 8: billboard.weekOrderPrint();continue;
+				case 9: billboard.songNameAlphabeticalOrderPrint();continue;
+				case 10:billboard.prefomerNameAlphabeticalOrderPrint();continue;
 				case 11: quit = true;System.out.println("GoodBye!");continue; 
 
 				default: System.out.println("Error Choice Not Available!");

@@ -122,9 +122,21 @@ public class Billboard100 {
 	//Search for a song name: 
 	//Prompt the user for a string, 
 	//then display all songs in the list that match the songs name (regardless of case).
-	public void songSearch() {
-
+	public void songSearch(Scanner keyboard) {
+		System.out.println("Enter a song name");
+		String input = keyboard.nextLine();
+		boolean sameSongs = false;
+		for(Song s:songList ) {
+			if(s.sameSong(input)) {
+				System.out.println(s);
+				sameSongs = true;
+			}
+		}
+		if (!sameSongs) {
+			System.out.println("Song Not Found!");
+		}
 	}
+	
 
 	//Print all the songs in the list with an Instance greater than 1.
 	public void instanceGT1Print() {

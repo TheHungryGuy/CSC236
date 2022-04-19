@@ -102,6 +102,14 @@ public class Song implements Comparable<Song> {
 		
 		return samePreformer;
 	}
+	public boolean sameSong(String pName) {
+		
+		if(this.songName.toString().toLowerCase().contains(pName.toLowerCase())) {
+			return true;
+		}
+		
+		return false;
+	}
 	//comparator classes???
 
 	/*
