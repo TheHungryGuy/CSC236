@@ -52,7 +52,7 @@ public class Song implements Comparable<Song> {
 	}
 	
 	// toString method to override method inherited from class Object
-		public String toString() { 
+	/*	public String toString() { 
 
 			String str="";
 			str+="Url: "+url;
@@ -65,7 +65,31 @@ public class Song implements Comparable<Song> {
 			str+=", Weeks on Chart: "+weeksOnChart+"\n";
 			return str;
 		}
-	
+	*/
+		public String toString() { 
+
+			String header="";
+			header+="Url:\t";
+			header+="Date:\t";
+			header+="Song:\t";
+			header+="Preformer:\t";
+			header+="SongID:\t";
+			header+="Instance:\t";
+			header+="Peak Position:\t";
+			header+="Weeks on Chart:\n";
+			
+			String dataRows="";
+			dataRows+="\t"+url;
+			dataRows+="\t"+weekID;
+			dataRows+="\t"+songName;
+			dataRows+="\t"+preformerName;
+			dataRows+="\t"+songID;
+			dataRows+="\t"+instance;
+			dataRows+="\t"+peakPos;
+			dataRows+="\t"+weeksOnChart+"\n";
+			return header+dataRows;
+		}
+		
 	//comparator classes???
 
 	/*

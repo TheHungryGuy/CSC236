@@ -76,7 +76,7 @@ public class Billboard100 {
 		try {
 			writer = new FileWriter("Output.txt");
 		for(Song str: fileArray) {
-		  writer.write(str + System.lineSeparator());
+		  writer.write(str.toString());
 		}
 		writer.close();
 		} catch (IOException e) {
