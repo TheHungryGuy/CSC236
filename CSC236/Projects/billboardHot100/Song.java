@@ -1,11 +1,11 @@
 package billboardHot100;
 
 public class Song implements Comparable<Song> {
-	
+
 	//attributes of song
-	
+
 	protected String url;
-	protected Date weekID;
+	protected Date date;
 	protected String songName;
 	protected String preformerName;
 	protected String songID;
@@ -16,19 +16,19 @@ public class Song implements Comparable<Song> {
 	//empty method
 	public Song() {
 	}
-	
+
 	//public method to build a song
 	public Song(String url,Date weekID,String songName, String preformerName, String songID, int instance, int peakPos, int weeksOnChart) {
-	       this.url=url;
-	       this.weekID=weekID;
-	       this.songName=songName;
-	       this.preformerName=preformerName;
-	       this.songID=songID;
-	       this.instance=instance;
-	       this.peakPos=peakPos;
-	       this.weeksOnChart=weeksOnChart;
+		this.url=url;
+		this.date=weekID;
+		this.songName=songName;
+		this.preformerName=preformerName;
+		this.songID=songID;
+		this.instance=instance;
+		this.peakPos=peakPos;
+		this.weeksOnChart=weeksOnChart;
 	}
-	
+
 	// equals method to override method inherited from class Object
 	@Override
 	public boolean equals(Object ptest) {
@@ -42,15 +42,15 @@ public class Song implements Comparable<Song> {
 		return this.songID.equalsIgnoreCase(song.songID);
 		//might need to change to fields
 	}
-	
-	
+
+
 	//overridden compareTo method
 	//compares Song ID's
 	@Override
 	public int compareTo(Song comparedSong) {
 		return this.songID.compareToIgnoreCase(comparedSong.songID);
 	}
-	
+
 	// toString method to override method inherited from class Object
 	/*	public String toString() { 
 
@@ -65,31 +65,43 @@ public class Song implements Comparable<Song> {
 			str+=", Weeks on Chart: "+weeksOnChart+"\n";
 			return str;
 		}
-	*/
-		public String toString() { 
+	 */
+	public String toString() { 
 
-			String header="";
-			header+="Url:\t";
-			header+="Date:\t";
-			header+="Song:\t";
-			header+="Preformer:\t";
-			header+="SongID:\t";
-			header+="Instance:\t";
-			header+="Peak Position:\t";
-			header+="Weeks on Chart:\n";
-			
-			String dataRows="";
-			dataRows+="\t"+url;
-			dataRows+="\t"+weekID;
-			dataRows+="\t"+songName;
-			dataRows+="\t"+preformerName;
-			dataRows+="\t"+songID;
-			dataRows+="\t"+instance;
-			dataRows+="\t"+peakPos;
-			dataRows+="\t"+weeksOnChart+"\n";
-			return dataRows;
+
+		String dataRows="";
+		dataRows+=url;
+		dataRows+="\t"+date;
+		dataRows+="\t"+songName;
+		dataRows+="\t"+preformerName;
+		dataRows+="\t"+songID;
+		dataRows+="\t"+instance;
+		dataRows+="\t"+peakPos;
+		dataRows+="\t"+weeksOnChart+"\n";
+		return dataRows;
+	}
+
+	public boolean sameDay(Date comparedDate)	{
+		boolean same = false;
+		if(this.date.compareTo(comparedDate)==0) {
+			same =true;
+		}
+
+		return same;
+		
+
+
+	}
+	
+	
+	public boolean samePreformer(String pName) {
+		boolean samePreformer = false;
+		if(this.preformerName.toString().toLowerCase().contains(pName.toLowerCase())) {
+			return true;
 		}
 		
+		return samePreformer;
+	}
 	//comparator classes???
 
 	/*
@@ -101,5 +113,5 @@ public class Song implements Comparable<Song> {
 	 *
 	 * 
 	 */
-	
+
 }
