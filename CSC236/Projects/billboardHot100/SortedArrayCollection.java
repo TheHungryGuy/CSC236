@@ -138,7 +138,27 @@ public class SortedArrayCollection<T> implements CollectionInterface<T>, Iterabl
 	@Override
 	public Iterator<T> iterator() {
 		// TODO Auto-generated method stub
-		return iterator();
+		return new CustomIterator<>();
 	}
+	
+    // Custom iterator
+    private class CustomIterator<T> implements Iterator<T>{
+        int N = numElements;
+        int i = 0;
+        public CustomIterator() {
+           
+        }
+
+        @Override
+        public boolean hasNext() {
+            return i < N;
+        }
+
+        @Override
+        public T next() {
+            return (T) elements[i++];
+        }
+           
+    }
 
 }
