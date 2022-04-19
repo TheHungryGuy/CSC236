@@ -1,6 +1,7 @@
 package billboardHot100;
 
 import java.io.BufferedReader;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -11,8 +12,6 @@ public class Billboard100 {
 
 
 	SortedArrayCollection<Song> songList = new SortedArrayCollection<>(20000); //increased cap to hold all songs in list
-
-	
 
 	public Billboard100(String filename)throws FileNotFoundException, IOException {
 		//method takes in filename as a parameter
@@ -54,7 +53,7 @@ public class Billboard100 {
 	//Print all Billboard Hot 100 Songs in the List (use the natural order).
 	public void naturalOrderPrint() {
 		try {
-			write();
+			writeAll();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -63,9 +62,10 @@ public class Billboard100 {
 
 	//Print all songs in the list that have been on the chart for more than 12 weeks.
 	public void weeksGT12Print() {
+		newWriter();
 		for(Song s: songList) {
 			if(s.weeksOnChart>12) {
-				System.out.println(s);
+				appendWriter(s);
 			}
 		}
 	}
@@ -84,15 +84,16 @@ public class Billboard100 {
 		System.out.println("Enter a year 2018-2021");
 		int y = keyboard.nextInt();
 		keyboard.nextLine();
-
 		//check if date lands on Saturdays
 		//if not throw error and ask for another date that is a saturday
 		Date sat = new Date(m,d,y);
-
 		for(Song s:songList) {
 			if(s.sameDay(sat)) {
-				System.out.println(s);
-			sameday = true;
+				if(!sameday) {
+					newWriter();
+				}
+				appendWriter(s);
+				sameday = true;
 			}
 		}
 		if(!sameday) {
@@ -110,7 +111,10 @@ public class Billboard100 {
 		boolean sameArtist = false;
 		for(Song s:songList ) {
 			if(s.samePreformer(input)) {
-				System.out.println(s);
+				if(!sameArtist) {
+					newWriter();
+				}
+				appendWriter(s);
 				sameArtist = true;
 			}
 		}
@@ -128,7 +132,10 @@ public class Billboard100 {
 		boolean sameSongs = false;
 		for(Song s:songList ) {
 			if(s.sameSong(input)) {
-				System.out.println(s);
+				if(!sameSongs) {
+					newWriter();
+				}
+				appendWriter(s);
 				sameSongs = true;
 			}
 		}
@@ -136,16 +143,27 @@ public class Billboard100 {
 			System.out.println("Song Not Found!");
 		}
 	}
-	
+
 
 	//Print all the songs in the list with an Instance greater than 1.
 	public void instanceGT1Print() {
-
+		newWriter();
+		for(Song s: songList) {
+			if(s.instance>1) {
+				appendWriter(s);
+			}
+		}
 	}
 
 	//Print all the songs in the list whose peak position is 1.
 	public void topPeakPrint() {
 
+		newWriter();
+		for(Song s: songList) {
+			if(s.peakPos==1) {
+				appendWriter(s);
+			}
+		}
 	}
 
 	//Print all Songs in order by WeekID (increasing order). 
@@ -168,7 +186,7 @@ public class Billboard100 {
 	}
 
 	//Remember that all of these methods should print to the output file.
-	private void write()throws IOException{
+	private void writeAll()throws IOException{
 		FileWriter writer;
 
 
@@ -187,9 +205,36 @@ public class Billboard100 {
 		System.out.println(
 				"Results in Output.txt file");
 	}
+	//newWriter clears the file and appends the header
+	private void newWriter() {
+		try{
+
+			FileWriter writeNew = new FileWriter("output.txt");
+			writeNew.write(header());
+			writeNew.close();
 
 
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		System.out.println("Data in output.txt");
 
+	}
+	//appendWriter is used in combination with new writer
+	//this allows each line to be added to the file without adding the header each time
+	private <T> void appendWriter(T songs) {
+		try{
+
+			FileWriter appendOld = new FileWriter("output.txt",true);
+			appendOld.write(songs.toString());
+			appendOld.close();
+
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+
+	}
+	//string that contains the first row
 	private String header() {
 		String header="";
 		header+="Url:\t\t\t\t\t\t\t";
