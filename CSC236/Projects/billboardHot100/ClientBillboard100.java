@@ -1,12 +1,53 @@
 package billboardHot100;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Scanner;
+
 public class ClientBillboard100 {
 
 	public static void main(String[] args) {
 
-		//Create Billboard100 object
-		Billboard100 billboard = new Billboard100();
-
+		try {
+			//Create Billboard100 object
+			
+				Billboard100 billboard = new Billboard100("hot.stuff.2018.csv");
+			
+				// TODO Auto-generated catch block
+				
+			
+			Scanner keyboard = new Scanner(System.in);
+			boolean quit = false;
+			int input = 0;
+			
+			while(!quit) {
+			    System.out.println("Menu : ");
+			    System.out.println("\t1-Display All Songs");
+			    System.out.println("\t2-Display songs that were only hot 100 list for more than 12 weeks");
+			    System.out.println("\t3-Search for Songs in a specific week");
+			    System.out.println("\t4-Search Author");
+			    System.out.println("\t5-Add Book");
+			    System.out.println("\t6-Exit");
+			    
+			    input = keyboard.nextInt();
+			    keyboard.nextLine();
+			    switch(input) {
+			    	case 1: billboard.naturalOrderPrint();
+			    	case 2: billboard.weeksGT12Print();
+			    	case 3: billboard.weekSearch(keyboard);
+			    	case 11: quit = true; 
+			    			break;
+			    	default: System.out.println("Error Choice Not Available!");
+			    }
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 
 		/*
 		 * 
