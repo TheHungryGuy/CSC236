@@ -19,8 +19,9 @@ public class Billboard100 {
 		BufferedReader reader = new BufferedReader(new FileReader(filename));
 
 		String line = reader.readLine();
+		line = reader.readLine();  //read line twice to skip first line
 		while(line != null) {
-			line = reader.readLine();
+			
 			String[]tmp = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
 			String[]datetmp = tmp[1].split("/", 0); //needed to split the date up to add new date in
 
@@ -48,6 +49,7 @@ public class Billboard100 {
 			songList.add(hotsong);
 			System.out.println("sucess?");
 
+			line = reader.readLine();
 		}
 	}
 
@@ -61,7 +63,7 @@ public class Billboard100 {
 	//Print all songs in the list that have been on the chart for more than 12 weeks.
 	public void weeksGT12Print() {
 		for(Song s: songList) {
-			if(s.weeksOnChart<12) {
+			if(s.weeksOnChart>12) {
 				System.out.println(s);
 			}
 		}

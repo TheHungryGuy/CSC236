@@ -57,13 +57,13 @@ public class SortedArrayCollection<T> implements CollectionInterface<T>, Iterabl
         int result;       // result of the comparison
         if (first > last) {
             found = false;
-            result = comp.compare(target, elements[location]);
+            result = ((Comparable)target).compareTo(elements[location]);
             if (result > 0)
                 location++;    // adjust location to indicate insert index
         }
         else {
             location = (first + last) / 2;
-            result = comp.compare(target, elements[location]);
+            result = ((Comparable)target).compareTo(elements[location]);
             if (result == 0)  // found target
                 found = true;
             else if (result > 0)   // target too high
