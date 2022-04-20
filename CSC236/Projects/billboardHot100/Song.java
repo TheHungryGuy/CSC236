@@ -30,8 +30,8 @@ public class Song implements Comparable<Song> {
 		this.peakPos=peakPos;
 		this.weeksOnChart=weeksOnChart;
 	}
-	
-	
+
+
 	//equals method useless? TODO
 	/*
 	// equals method to override method inherited from class Object
@@ -47,9 +47,9 @@ public class Song implements Comparable<Song> {
 		return this.songID.equalsIgnoreCase(song.songID);
 		//might need to change to fields
 	} */
-	
-	
-	
+
+
+
 	//overridden compareTo method
 	//compares Song ID's
 	@Override
@@ -58,11 +58,11 @@ public class Song implements Comparable<Song> {
 	}
 	public String toString() { 
 		String dataRows="";
-        
-        String formatStr = "%-45s %-15s %-30s %-55s %-55s %-5s %-5s %-5s%n";
-        dataRows = String.format(formatStr, url, date, songName, preformerName, songID, instance, peakPos, weeksOnChart);
 
-        return dataRows;
+		String formatStr = "%-45s %-15s %-30s %-55s %-55s %-5s %-5s %-5s%n";
+		dataRows = String.format(formatStr, url, date, songName, preformerName, songID, instance, peakPos, weeksOnChart);
+
+		return dataRows;
 	}
 	public boolean sameDay(Date comparedDate)	{
 		boolean same = false;

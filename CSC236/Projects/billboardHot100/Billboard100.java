@@ -253,7 +253,7 @@ public class Billboard100 {
 	private String header() {
 		String dataRows="";
 		String formatStr = "%-51s %-16s %-29s %-55s %-51s %-5s %-5s %-5s%n";
-	    dataRows = String.format(formatStr, "URL:", "Date:", "Song:", "Preformer:", "songID:", "Instance:", "PeakPos:", "WeeksOnChart:");
+		dataRows = String.format(formatStr, "URL:", "Date:", "Song:", "Preformer:", "songID:", "Instance:", "PeakPos:", "WeeksOnChart:");
 
 		return dataRows;
 	}

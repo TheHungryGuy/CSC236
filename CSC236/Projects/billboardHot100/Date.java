@@ -6,11 +6,11 @@ public class Date implements Comparable<Date> {
 	private int month;
 	private int day;
 	private int year;
-	
+
 	//empty constructor
 	public Date() {
 	}
-	
+
 	//public method for date
 	public Date(int month, int day,int year) {
 		this.month=month;
@@ -28,11 +28,11 @@ public class Date implements Comparable<Date> {
 		// otherwise, check that all fields are equal
 		Date date = (Date) ptest;
 		return this.month == date.month &&
-							this.day == date.day &&
-								this.year == date.year;
-		
+				this.day == date.day &&
+				this.year == date.year;
+
 	}
-	
+
 	//compareTo method checks if year and month are the equal
 	//else return days subtracted
 	@Override
@@ -46,10 +46,10 @@ public class Date implements Comparable<Date> {
 		return this.day-comparedDate.day;	
 	}
 
-    public String toString() {
-        return month+"/"+day+"/"+year;
-    }
-	
+	public String toString() {
+		return month+"/"+day+"/"+year;
+	}
+
 }
 /*
 public String toString() { 
@@ -63,7 +63,7 @@ public String toString() {
 	header+=", Instance:\t";
 	header+=", Peak Position:\t";
 	header+=", Weeks on Chart:\n";
-	
+
 	String dataRows="";
 	dataRows+="\t"+url;
 	dataRows+="\t"+weekID;
@@ -76,4 +76,4 @@ public String toString() {
 	return header+dataRows;
 }
 
-*/
+ */
