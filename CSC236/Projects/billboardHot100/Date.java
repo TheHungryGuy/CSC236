@@ -1,5 +1,5 @@
 package billboardHot100;
-
+//Antonio Arce CSC236 Data Structures in Java Lab 3
 public class Date implements Comparable<Date> {
 
 	//Attributes of Date

@@ -1,5 +1,5 @@
 package billboardHot100;
-
+//Antonio Arce CSC236 Data Structures in Java Lab 3
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;

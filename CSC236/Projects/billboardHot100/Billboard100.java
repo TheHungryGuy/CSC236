@@ -1,5 +1,5 @@
 package billboardHot100;
-
+//Antonio Arce CSC236 Data Structures in Java Lab 3
 import java.io.BufferedReader;
 
 import java.io.FileNotFoundException;
@@ -10,6 +10,9 @@ import java.util.Scanner;
 
 public class Billboard100 {
 	SortedArrayCollection<Song> songList = new SortedArrayCollection<>(20000); //increased cap to hold all songs in list
+	SortedArrayCollection<Song> preformerList = new SortedArrayCollection<>(20000,Song.preformerComparator());
+	SortedArrayCollection<Song> songNameList = new SortedArrayCollection<>(20000,Song.songComparator());
+	SortedArrayCollection<Song> weekList = new SortedArrayCollection<>(20000,Song.weekComparator());
 	public Billboard100(String filename)throws FileNotFoundException, IOException {
 		//method takes in filename as a parameter
 		//Adds to the songList
@@ -42,6 +45,10 @@ public class Billboard100 {
 			Song hotsong //temporary new song to add to list
 			= new Song(tmp[0],newday,tmp[2],tmp[3],tmp[4],ins,pos,weeks);
 			songList.add(hotsong);
+			preformerList.add(hotsong);
+			songNameList
+			.add(hotsong);
+			weekList.add(hotsong);
 			//read next line
 			line = reader.readLine();
 		}
@@ -50,9 +57,8 @@ public class Billboard100 {
 	//Print all Billboard Hot 100 Songs in the List (use the natural order).
 	public void naturalOrderPrint() {
 		try {
-			writeAll();
+			writeAll(songList);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -167,30 +173,42 @@ public class Billboard100 {
 	//This is a date. 
 	//Hint: need to add a comparator to the Song class as this is not the natural order.
 	public void weekOrderPrint() {
-
+		try {
+			writeAll(weekList);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	//Print all Songs in alphabetical order by Song Name. 
 	//Hint: need to add a comparator to the Song class as this is not the natural order.
 	public void songNameAlphabeticalOrderPrint() {
-
+		try {
+			writeAll(songNameList);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	//Print all songs in alphabetical order by Performer Name. 
 	//Hint: need to add a comparator to the Song class as this is not the natural order.
 	public void prefomerNameAlphabeticalOrderPrint() {
-
+		try {
+			writeAll(preformerList);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	//Remember that all of these methods should print to the output file.
-	private void writeAll()throws IOException{
+	private void writeAll(SortedArrayCollection<Song> list)throws IOException{
 		FileWriter writer;
 
 
 		try {
 			writer = new FileWriter("Output.txt");
 			writer.write(header());
-			for(Song str: songList) {
+			for(Song str: list) {
 				writer.write(str.toString());
 			}
 			writer.close();

@@ -1,5 +1,5 @@
 package billboardHot100;
-
+//Antonio Arce CSC236 Data Structures in Java Lab 3
 import java.util.Iterator;
 import java.util.Comparator;
 
@@ -18,11 +18,26 @@ public class SortedArrayCollection<T> implements CollectionInterface<T>, Iterabl
     public SortedArrayCollection() {
         elements = (T[]) new Object[DEFCAP];
         origCap = DEFCAP;
+        comp = new Comparator<T>() {
+            public int compare(T element1, T element2) {
+               return ((Comparable)element1).compareTo(element2);
+            } // end of compare method
+         }; // end of inner class and assign statement for comp
     }
 
     public SortedArrayCollection(int capacity) {
         elements = (T[]) new Object[capacity];
         this.origCap = capacity;
+        comp = new Comparator<T>() {
+            public int compare(T element1, T element2) {
+               return ((Comparable)element1).compareTo(element2);
+            } // end of compare method
+         }; // end of inner class and assign statement for comp
+    }
+    public SortedArrayCollection(int capacity,Comparator<T> comp) {
+        elements = (T[]) new Object[capacity];
+        this.origCap = capacity;
+        this.comp = comp;
     }
 
     protected void enlarge() {
@@ -57,13 +72,13 @@ public class SortedArrayCollection<T> implements CollectionInterface<T>, Iterabl
         int result;       // result of the comparison
         if (first > last) {
             found = false;
-            result = ((Comparable)target).compareTo(elements[location]);
+            result = comp.compare(target, elements[location]);
             if (result > 0)
                 location++;    // adjust location to indicate insert index
         }
         else {
             location = (first + last) / 2;
-            result = ((Comparable)target).compareTo(elements[location]);
+            result = comp.compare(target, elements[location]);
             if (result == 0)  // found target
                 found = true;
             else if (result > 0)   // target too high
@@ -72,6 +87,7 @@ public class SortedArrayCollection<T> implements CollectionInterface<T>, Iterabl
                 recFind(target, first, location - 1);
         }
     }
+
     public boolean add(T element) {
     // Precondition:  element is Comparable to previously added objects
     //

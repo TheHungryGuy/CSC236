@@ -1,4 +1,6 @@
 package billboardHot100;
+//Antonio Arce CSC236 Data Structures in Java Lab 3
+import java.util.Comparator;
 
 public class Song implements Comparable<Song> {
 
@@ -28,7 +30,10 @@ public class Song implements Comparable<Song> {
 		this.peakPos=peakPos;
 		this.weeksOnChart=weeksOnChart;
 	}
-
+	
+	
+	//equals method useless? TODO
+	/*
 	// equals method to override method inherited from class Object
 	@Override
 	public boolean equals(Object ptest) {
@@ -41,34 +46,17 @@ public class Song implements Comparable<Song> {
 		Song song = (Song) ptest;
 		return this.songID.equalsIgnoreCase(song.songID);
 		//might need to change to fields
-	}
-
-
+	} */
+	
+	
+	
 	//overridden compareTo method
 	//compares Song ID's
 	@Override
 	public int compareTo(Song comparedSong) {
 		return this.songID.compareToIgnoreCase(comparedSong.songID);
 	}
-
-	// toString method to override method inherited from class Object
-	/*	public String toString() { 
-
-			String str="";
-			str+="Url: "+url;
-			str+=", Date: "+weekID;
-			str+=", Song: "+songName;
-			str+=", Preformer: "+preformerName;
-			str+=", SongID: "+songID;
-			str+=", Instance: "+instance;
-			str+=", Peak Position: "+peakPos;
-			str+=", Weeks on Chart: "+weeksOnChart+"\n";
-			return str;
-		}
-	 */
 	public String toString() { 
-
-
 		String dataRows="";
 		dataRows+=url;
 		dataRows+="\t"+date;
@@ -80,37 +68,51 @@ public class Song implements Comparable<Song> {
 		dataRows+="\t"+weeksOnChart+"\n";
 		return dataRows;
 	}
-
 	public boolean sameDay(Date comparedDate)	{
 		boolean same = false;
 		if(this.date.compareTo(comparedDate)==0) {
 			same =true;
 		}
-
 		return same;
-		
-
-
 	}
-	
-	
 	public boolean samePreformer(String pName) {
 		boolean samePreformer = false;
 		if(this.preformerName.toString().toLowerCase().contains(pName.toLowerCase())) {
 			return true;
 		}
-		
+
 		return samePreformer;
 	}
 	public boolean sameSong(String pName) {
-		
 		if(this.songName.toString().toLowerCase().contains(pName.toLowerCase())) {
 			return true;
 		}
-		
 		return false;
 	}
-	//comparator classes???
+	public static Comparator<Song> weekComparator() {
+		return new Comparator<Song>() {
+			public int compare(Song st1, Song st2) {
+				return st1.date.compareTo(st2.date);
+			}
+		};
+	}
+
+
+	public static Comparator<Song> songComparator() {
+		return new Comparator<Song>() {
+			public int compare(Song st1, Song st2) {
+				return st1.songName.compareTo(st2.songName);
+			}
+		};
+	}
+
+	public static Comparator<Song> preformerComparator() {
+		return new Comparator<Song>() {
+			public int compare(Song st1, Song st2) {
+				return st1.preformerName.compareTo(st2.preformerName);
+			}
+		};
+	}
 
 	/*
 	 * 
