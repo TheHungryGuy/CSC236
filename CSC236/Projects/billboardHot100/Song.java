@@ -31,25 +31,6 @@ public class Song implements Comparable<Song> {
 		this.weeksOnChart=weeksOnChart;
 	}
 
-
-	//equals method useless? TODO
-	/*
-	// equals method to override method inherited from class Object
-	@Override
-	public boolean equals(Object ptest) {
-
-		// if parm is null or is not a Song object, they are not equal
-		if (ptest == null || !(ptest instanceof Song))
-			return false;
-
-		// otherwise, check that all fields are equal
-		Song song = (Song) ptest;
-		return this.songID.equalsIgnoreCase(song.songID);
-		//might need to change to fields
-	} */
-
-
-
 	//overridden compareTo method
 	//compares Song ID's
 	@Override

@@ -51,29 +51,3 @@ public class Date implements Comparable<Date> {
 	}
 
 }
-/*
-public String toString() { 
-
-	String header="";
-	header+="Url:\t";
-	header+=", Date:\t";
-	header+=", Song:\t";
-	header+=", Preformer:\t";
-	header+=", SongID:\t";
-	header+=", Instance:\t";
-	header+=", Peak Position:\t";
-	header+=", Weeks on Chart:\n";
-
-	String dataRows="";
-	dataRows+="\t"+url;
-	dataRows+="\t"+weekID;
-	dataRows+="\t"+songName;
-	dataRows+="\t"+preformerName;
-	dataRows+="\t"+songID;
-	dataRows+="\t"+instance;
-	dataRows+="\t"+peakPos;
-	dataRows+="\t"+weeksOnChart+"\n";
-	return header+dataRows;
-}
-
- */
