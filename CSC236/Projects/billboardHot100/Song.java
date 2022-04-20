@@ -58,15 +58,11 @@ public class Song implements Comparable<Song> {
 	}
 	public String toString() { 
 		String dataRows="";
-		dataRows+=url;
-		dataRows+="\t"+date;
-		dataRows+="\t"+songName;
-		dataRows+="\t"+preformerName;
-		dataRows+="\t"+songID;
-		dataRows+="\t"+instance;
-		dataRows+="\t"+peakPos;
-		dataRows+="\t"+weeksOnChart+"\n";
-		return dataRows;
+        
+        String formatStr = "%-45s %-15s %-30s %-55s %-55s %-5s %-5s %-5s%n";
+        dataRows = String.format(formatStr, url, date, songName, preformerName, songID, instance, peakPos, weeksOnChart);
+
+        return dataRows;
 	}
 	public boolean sameDay(Date comparedDate)	{
 		boolean same = false;

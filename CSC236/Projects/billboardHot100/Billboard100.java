@@ -251,16 +251,11 @@ public class Billboard100 {
 	}
 	//string that contains the first row
 	private String header() {
-		String header="";
-		header+="Url:\t\t\t\t\t\t\t";
-		header+="Date:\t\t";
-		header+="Song:\t\t";
-		header+="Preformer:\t\t\t";
-		header+="SongID:\t\t\t\t";
-		header+="Instance:\t";
-		header+="Peak Position:\t";
-		header+="Weeks on Chart:\n";
-		return header;
+		String dataRows="";
+		String formatStr = "%-51s %-16s %-29s %-55s %-51s %-5s %-5s %-5s%n";
+	    dataRows = String.format(formatStr, "URL:", "Date:", "Song:", "Preformer:", "songID:", "Instance:", "PeakPos:", "WeeksOnChart:");
+
+		return dataRows;
 	}
 
 	/*
